@@ -16,20 +16,52 @@ function computerPlay(){
     return(compHand)
 }
 
-console.log(computerPlay())
+
 
 function playerSelection(){
     const play1 = prompt("Choose between Rock, Paper, or Scissors")
     
     let play2 = play1.charAt(0).toUpperCase()+play1.slice(1).toLowerCase();
     
-    if(play2 === "Rock"||"Paper"||"Scissor"){
-        return(play2)
-    }else{
-        return("Did you spell that right?")
-    }
+    return(play2)
 
 
 }
 
-console.log(playerSelection())
+const playerHand = playerSelection()
+const compHand = computerPlay()
+//console.log(playerHand, compHand)
+
+function playRound(playerHand, compHand){
+    let result;
+    
+    switch(true){
+        case(playerHand == "Rock" && compHand == "Paper"):
+            result = "Computer wins. Paper beats rock!";
+            break;
+        case(playerHand == "Rock" && compHand == "Scissors"):
+            result = "Player wins. Rock beats scissors!";
+            break;
+        case(playerHand == "Paper" && compHand == "Rock"):
+            result = "Player wins. Paper beats rock!";
+            break;
+        case(playerHand === "Paper" && compHand === "Scissors"):
+            result = "Computer wins. Scissors beats paper!";
+            break;
+        case(playerHand==="Scissors"&&compHand==="Rock"):
+            result = "Computer wins. Rock beats scissors!";
+            break;
+        case(playerHand==="Scissors"&&compHand==="Paper"):
+            result = "Player wins. Scissors beats paper!";
+            break;
+        default:
+            result = "wtf!"
+   }
+
+   
+    return(result)
+}
+
+console.log(playRound())
+console.log(compHand)
+console.log(playerHand)

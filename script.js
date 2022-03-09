@@ -19,7 +19,7 @@ function computerPlay(){
 
 
 function playerSelection(){
-    const play1 = prompt("Choose between Rock, Paper, or Scissors")
+    const play1 = prompt("Choose between Rock, Paper, or Scissors.\nBest out of 5 wins.")
     
     let play2 = play1.charAt(0).toUpperCase()+play1.slice(1).toLowerCase();
     
@@ -75,13 +75,40 @@ function playRound( ){
 
 function game( ){
    
+    let playerWins = 0;
+    let compWins = 0;
+    let tieGames = 0;
+
    for(i=0; i<5; i++){
     let rounds = playRound();
-    console.log(rounds)
+    //console.log(rounds)
+
+    
+    if(rounds === 2){
+        ++playerWins;
+        //console.log(playerWins);
+    }else if(rounds ===1){
+        ++compWins;
+        
+    }else{
+        ++tieGames;
+    }
+
+    console.log("Player wins: "+playerWins);
+    console.log("Computer wins:"+compWins)
+    console.log("Tie games: "+tieGames+"\n")
+
+    
    }
+
+if(playerWins > compWins){
+    console.log("\nPlayer Wins!!")
+}else if(compWins > playerWins){
+    console.log("\nComputer Wins!")
+}else{
+    console.log("\nLooks like a tie!")
+}
 
 }
 
-console.log(game( ))
-//console.log(compHand)
-//console.log(playerHand)
+console.log(game())

@@ -28,40 +28,50 @@ function playerSelection(){
 
 }
 
-const playerHand = playerSelection()
-const compHand = computerPlay()
-//console.log(playerHand, compHand)
 
-function playRound(playerHand, compHand){
+//Couldn't get function to work withough putting hand vars inside of the function.
+
+function playRound( ){
     let result;
+    let playHand = playerSelection()
+    const comHand = computerPlay()
     
     switch(true){
-        case(playerHand == "Rock" && compHand == "Paper"):
+        case(playHand == "Rock" && comHand == "Paper"):
             result = "Computer wins. Paper beats rock!";
             break;
-        case(playerHand == "Rock" && compHand == "Scissors"):
+        case(playHand == "Rock" && comHand == "Scissors"):
             result = "Player wins. Rock beats scissors!";
             break;
-        case(playerHand == "Paper" && compHand == "Rock"):
+        case(playHand == "Paper" && comHand == "Rock"):
             result = "Player wins. Paper beats rock!";
             break;
-        case(playerHand === "Paper" && compHand === "Scissors"):
+        case(playHand === "Paper" && comHand === "Scissors"):
             result = "Computer wins. Scissors beats paper!";
             break;
-        case(playerHand==="Scissors"&&compHand==="Rock"):
+        case(playHand==="Scissors"&&comHand==="Rock"):
             result = "Computer wins. Rock beats scissors!";
             break;
-        case(playerHand==="Scissors"&&compHand==="Paper"):
+        case(playHand==="Scissors"&&comHand==="Paper"):
             result = "Player wins. Scissors beats paper!";
             break;
         default:
-            result = "wtf!"
+            result = "Tie Game!"
    }
 
-   
-    return(result)
+   console.log("Computer plays "+comHand)
+   console.log("Player plays "+playHand)
+   console.log(result)
+    return(null)
 }
 
-console.log(playRound())
-console.log(compHand)
-console.log(playerHand)
+function game( ){
+    let rounds = playRound();
+    console.log(rounds)
+
+
+}
+
+console.log(game( ))
+//console.log(compHand)
+//console.log(playerHand)

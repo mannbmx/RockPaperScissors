@@ -66,9 +66,11 @@ function playRound( ){
 }
 
 function game( ){
+   
+   for(i=0; i<5; i++){
     let rounds = playRound();
-    console.log(rounds)
-
+    //console.log(rounds)
+   }
 
 }
 

@@ -33,43 +33,51 @@ function playerSelection(){
 
 function playRound( ){
     let result;
+    let resultNum;
     let playHand = playerSelection()
     const comHand = computerPlay()
     
     switch(true){
         case(playHand == "Rock" && comHand == "Paper"):
             result = "Computer wins. Paper beats rock!";
+            resultNum = 1;
             break;
         case(playHand == "Rock" && comHand == "Scissors"):
             result = "Player wins. Rock beats scissors!";
+            resultNum = 2;
             break;
         case(playHand == "Paper" && comHand == "Rock"):
             result = "Player wins. Paper beats rock!";
+            resultNum = 2;
             break;
         case(playHand === "Paper" && comHand === "Scissors"):
             result = "Computer wins. Scissors beats paper!";
+            resultNum = 1;
             break;
         case(playHand==="Scissors"&&comHand==="Rock"):
             result = "Computer wins. Rock beats scissors!";
+            resultNum = 1;
             break;
         case(playHand==="Scissors"&&comHand==="Paper"):
             result = "Player wins. Scissors beats paper!";
+            resultNum = 2;
             break;
         default:
             result = "Tie Game!"
+            resultNum = 3;
    }
 
    console.log("Computer plays "+comHand)
    console.log("Player plays "+playHand)
    console.log(result)
-    return(null)
+    return(resultNum)
 }
 
 function game( ){
    
    for(i=0; i<5; i++){
     let rounds = playRound();
-    //console.log(rounds)
+    console.log(rounds)
    }
 
 }

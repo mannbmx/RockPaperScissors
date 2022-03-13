@@ -18,9 +18,10 @@ function computerPlay(){
 
 
 
-function playerSelection(){
-    const play1 = prompt("Choose between Rock, Paper, or Scissors.\nBest out of 5 wins.")
-    
+function playerSelection(string){
+    //const play1 = prompt("Choose between Rock, Paper, or Scissors.\nBest out of 5 wins.")
+    const play1 = string;
+
     let play2 = play1.charAt(0).toUpperCase()+play1.slice(1).toLowerCase();
     
     return(play2)
@@ -31,10 +32,10 @@ function playerSelection(){
 
 //Couldn't get function to work withough putting hand vars inside of the function.
 
-function playRound( ){
+function playRound(string){
     let result;
     let resultNum;
-    let playHand = playerSelection()
+    let playHand = playerSelection(string)
     const comHand = computerPlay()
     
     switch(true){
@@ -66,7 +67,14 @@ function playRound( ){
             result = "Tie Game!"
             resultNum = 3;
    }
-
+    const resultsDiv = document.querySelector('#results');
+    const gameResults = document.createElement('p');
+    gameResults.textContent = result;
+    resultsDiv.appendChild(gameResults);
+   
+   
+   
+   
    console.log("Computer plays "+comHand)
    console.log("Player plays "+playHand)
    console.log(result)
@@ -79,8 +87,8 @@ function game( ){
     let compWins = 0;
     let tieGames = 0;
 
-   for(i=0; i<5; i++){
-    let rounds = playRound();
+   //for(i=0; i<5; i++){
+    //let rounds = playRound();
     //console.log(rounds)
 
     
@@ -101,14 +109,36 @@ function game( ){
     
    }
 
-if(playerWins > compWins){
-    console.log("\nPlayer Wins!!")
-}else if(compWins > playerWins){
-    console.log("\nComputer Wins!")
-}else{
-    console.log("\nLooks like a tie!")
-}
+//if(playerWins > compWins){
+   // console.log("\nPlayer Wins!!")
+//}else if(compWins > playerWins){
+    //console.log("\nComputer Wins!")
+//}else{
+    //console.log("\nLooks like a tie!")
+//}
 
-}
 
-console.log(game())
+
+//console.log(game())
+
+
+//UI below this line
+
+const rock = document.querySelector("#rock");
+rock.addEventListener('click', ()=>{
+    playRound('rock');
+});
+
+const paper = document.querySelector('#paper');
+paper.addEventListener('click', ()=>{
+    playRound("paper");
+});
+
+const scissors = document.querySelector('#scissors');
+scissors.addEventListener('click', ()=>{
+    playRound("scissors");
+});
+
+
+
+

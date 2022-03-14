@@ -1,3 +1,5 @@
+
+//Sets the computer's selection.
 function computerPlay(){
     let randomNum = Math.floor(Math.random()*3)+1;
     let compHand;
@@ -17,7 +19,7 @@ function computerPlay(){
 }
 
 
-
+//Sets the users slection
 function playerSelection(string){
     //const play1 = prompt("Choose between Rock, Paper, or Scissors.\nBest out of 5 wins.")
     const play1 = string;
@@ -29,14 +31,12 @@ function playerSelection(string){
 
 }
 
-
-//Couldn't get function to work withough putting hand vars inside of the function.
-
+//Plays a round and delivers the results
 function playRound(string){
     let result;
     let resultNum;
-    let playHand = playerSelection(string)
-    const comHand = computerPlay()
+    let playHand = playerSelection(string);
+    const comHand = computerPlay();
     
     switch(true){
         case(playHand == "Rock" && comHand == "Paper"):
@@ -67,78 +67,94 @@ function playRound(string){
             result = "Tie Game!"
             resultNum = 3;
    }
-    const resultsDiv = document.querySelector('#results');
-    const gameResults = document.createElement('p');
+
+    const gameResults = document.querySelector('#gameResults');
     gameResults.textContent = result;
-    resultsDiv.appendChild(gameResults);
-   
-   
-   
-   
-   console.log("Computer plays "+comHand)
-   console.log("Player plays "+playHand)
-   console.log(result)
-    return(resultNum)
+    //resultsDiv.appendChild(gameResults);
+    
+   console.log("Computer plays "+comHand);
+   console.log("Player plays "+playHand);
+    return(resultNum);
 }
 
-function game( ){
-   
-    let playerWins = 0;
-    let compWins = 0;
-    let tieGames = 0;
+const resultsDiv = document.querySelector('#results');
+let playerWins = 0;
+let compWins = 0;
+let tieGames = 0;
 
-   //for(i=0; i<5; i++){
-    //let rounds = playRound();
-    //console.log(rounds)
-
-    
-    if(rounds === 2){
-        ++playerWins;
-        //console.log(playerWins);
-    }else if(rounds ===1){
-        ++compWins;
-        
-    }else{
-        ++tieGames;
-    }
-
-    console.log("Player wins: "+playerWins);
-    console.log("Computer wins:"+compWins)
-    console.log("Tie games: "+tieGames+"\n")
-
-    
-   }
-
-//if(playerWins > compWins){
-   // console.log("\nPlayer Wins!!")
-//}else if(compWins > playerWins){
-    //console.log("\nComputer Wins!")
-//}else{
-    //console.log("\nLooks like a tie!")
-//}
-
-
-
-//console.log(game())
-
-
-//UI below this line
+const winner = document.createElement('h3');
 
 const rock = document.querySelector("#rock");
 rock.addEventListener('click', ()=>{
-    playRound('rock');
+    let rounds = playRound('rock');
+    if(rounds === 2){
+        ++playerWins;
+        playerTotal.textContent = "Player Wins: "+ playerWins;
+    }else if(rounds ===1){
+        ++compWins;
+        compTotal.textContent = "Computer Wins: "+ compWins;
+    }else{
+        ++tieGames;
+    }
+    if(playerWins === 5){
+        winner.textContent = " Congratulations! You win overall!";
+        resultsDiv.appendChild(winner);
+    }else if(compWins === 5){
+        winner.textContent = "Tough luck! The computer wins overall!";
+        resultsDiv.appendChild(winner);
+    }else{};
 });
 
 const paper = document.querySelector('#paper');
 paper.addEventListener('click', ()=>{
-    playRound("paper");
+    let rounds = playRound("paper");
+    if(rounds === 2){
+        ++playerWins;
+        playerTotal.textContent = "Player Wins: "+ playerWins;
+    }else if(rounds ===1){
+        ++compWins;
+        compTotal.textContent = "Computer Wins: "+ compWins;
+    }else{
+        ++tieGames;
+    }
+    if(playerWins === 5){
+        winner.textContent = " Congratulations! You win overall!";
+        resultsDiv.appendChild(winner);
+    }else if(compWins === 5){
+        winner.textContent = "Tough luck! The computer wins overall!";
+        resultsDiv.appendChild(winner);
+        
+    }else{};
 });
 
 const scissors = document.querySelector('#scissors');
 scissors.addEventListener('click', ()=>{
-    playRound("scissors");
+    let rounds = playRound("scissors");
+    if(rounds === 2){
+        ++playerWins;
+        playerTotal.textContent = "Player Wins: "+ playerWins;
+    }else if(rounds ===1){
+        ++compWins;
+        compTotal.textContent = "Computer Wins: "+ compWins;
+    }else{
+        ++tieGames;
+     
+    }
+    if(playerWins === 5){
+        winner.textContent = " Congratulations! You win overall!";
+        resultsDiv.appendChild(winner);
+    }else if(compWins === 5){
+        winner.textContent = "Tough luck! The computer wins overall!";
+        resultsDiv.appendChild(winner);
+    }else{};
 });
 
+const playerTotal = document.querySelector('#playerWins');
+playerTotal.textContent = "Player Wins: "+ playerWins;
+
+const compTotal = document.querySelector('#compWins');
+compTotal.textContent = "Computer Wins: "+ compWins;
 
 
-
+console.log(playerWins);
+console.log(compWins)
